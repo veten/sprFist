@@ -35,10 +35,20 @@ public class HelloController {
         return "register";
     }
     
-    
+    @SuppressWarnings("resource")
     @RequestMapping(value="/register", method=RequestMethod.POST)
     public String formSubmit(@ModelAttribute NewUser user, Model model) {
-    	UserControllerUtil.registerSubmit();
+    	ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(EmailAPI.class, MailConfig.class);
+// 		EmailAPI emailAPI = (EmailAPI) context.getBean("myEmailAPI");	//This works if named @Service definition done in EmailAPI.java
+    	EmailAPI emailAPI = (EmailAPI) context.getBean(EmailAPI.class);
+ 		String toAddr = "";
+ 		String fromAddr = "";      
+ 		// email subject
+ 		String subject = "TestMail";      
+ 		// email body
+ 		String body = "This is it!!!";
+ 		
+ 		emailAPI.readyToSendEmail(toAddr, fromAddr, subject, body);
         System.out.println(user.getName());
         System.out.println(user.getEmail());
         model.addAttribute("user", user);

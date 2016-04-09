@@ -6,7 +6,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
  
  
-@Service
+//@Service("myEmailAPI")		//See HelloController method formSubmit for explanation
 public class EmailAPI {
  
 	@Autowired
