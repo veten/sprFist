@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Register</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Register to system by filling in form below.</h1><p> You will get your initial password by e-mail. </p>
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+    	<p>Name: <input type="text" th:field="*{name}" /></p>
+        <p>E-mail address: <input type="text" th:field="*{email}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
